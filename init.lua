@@ -1,3 +1,4 @@
+vim.cmd('colorscheme habamax')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -11,7 +12,7 @@ vim.o.shiftwidth = 4
 vim.o.showmode = true
 vim.o.signcolumn = 'yes'
 vim.o.list = true
-vim.opt.listchars = { tab = '>- ', trail = '.', nbsp = '␣' }
+vim.opt.listchars = { tab = '▏ ', trail = '.', nbsp = '␣' }
 vim.o.cursorline = true
 vim.o.inccommand = 'split'
 vim.o.scrolloff = 10
@@ -22,14 +23,18 @@ vim.o.splitbelow = true
 vim.o.shell = 'cmd.exe'
 
 -- [Keymaps]
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>') -- clear highlights with esc
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-vim.keymap.set('n', '<leader>t', '<cmd>terminal<CR>', { desc = 'Open [T]erminal' })
-vim.keymap.set('n', '<leader>vt', '<cmd>vsplit | terminal<CR>', { desc = 'Open [T]erminal with [V]ertical split' })
-vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y')
-vim.keymap.set('n', '<leader>Y', '"+yy')
-vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p')
-vim.keymap.set({ 'n', 'v' }, '<leader>P', '"+P')
+function map(modes, key, command, opts)
+	vim.keymap.set(modes, key, command, opts)
+end
+map('n', '<leader>e', '<cmd>Ex<CR>')
+map('n', '<Esc>', '<cmd>nohlsearch<CR>') -- clear highlights with esc
+map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+map('n', '<leader>t', '<cmd>terminal<CR>', { desc = 'Open [T]erminal' })
+map('n', '<leader>vt', '<cmd>vsplit | terminal<CR>', { desc = 'Open [T]erminal with [V]ertical split' })
+map({ 'n', 'v' }, '<leader>y', '"+y')
+map('n', '<leader>Y', '"+yy')
+map({ 'n', 'v' }, '<leader>p', '"+p')
+map({ 'n', 'v' }, '<leader>P', '"+P')
 
 -- [AutoCommands]
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -63,3 +68,5 @@ vim.api.nvim_create_autocmd('TermClose', {
 	pattern = 'term://*',
 	command = 'bdelete!',
 })
+
+require('config.lazy')
