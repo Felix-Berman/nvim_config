@@ -4,6 +4,8 @@ vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
 -- [Options]
+vim.o.textwidth = 80
+vim.o.colorcolumn = '81'
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.tabstop = 4
