@@ -3,10 +3,10 @@ return {
 	'lewis6991/gitsigns.nvim',
 	'folke/which-key.nvim',
 	{ 
-		'nvim-mini/mini.surround',
-		version = '*',
+		'kylechui/nvim-surround',
+		event = 'VeryLazy',
 		config = function()
-			require('mini.surround').setup()
+			require('nvim-surround').setup()
 		end
 	},
 	{
