@@ -31,5 +31,6 @@ return {
 			builtin.find_files { cwd = vim.fn.stdpath 'config' }
 		end, { desc = '[F]ind files in [N]eovim config' })
 		map('n', '<leader>fr', builtin.lsp_references, { desc = '[F]ind [R]eferences' })
+		map('n', '<leader>ft', builtin.treesitter)
 	end
 }
