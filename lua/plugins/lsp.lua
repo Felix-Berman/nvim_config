@@ -5,6 +5,7 @@ return {
 		{ 'mason-org/mason.nvim', opts = {} },
 		'mason-org/mason-lspconfig.nvim',
 		'saghen/blink.cmp',
+		'saghen/blink.lib',
 	},
 	config = function()
 		vim.api.nvim_create_autocmd('LspAttach', {
@@ -74,7 +75,7 @@ return {
 					[vim.diagnostic.severity.HINT] = '󰌶 ',
 				},
 			} or {},
-			virtual_text = {
+			virtual_lines = {
 				source = 'if_many',
 				spacing = 2,
 				format = function(diagnostic)
